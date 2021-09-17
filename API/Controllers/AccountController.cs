@@ -61,6 +61,7 @@ namespace API.Controllers
         {
 
            var user = await _context.Users
+                            .Include(p => p.Photos)
                             .SingleOrDefaultAsync(s => s.UserName == loginDTO.Username);
 
             if(user == null)
@@ -80,7 +81,8 @@ namespace API.Controllers
             return new UserDTO
             {
                 UserName = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(s => s.IsMain)?.Url
             };
         }
     }
