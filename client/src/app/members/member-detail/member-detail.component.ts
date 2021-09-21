@@ -11,7 +11,7 @@ import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from '@kolkov
 })
 export class MemberDetailComponent implements OnInit {
 
-  member!: Member;
+  member: Member;
 
   galleryOptions: NgxGalleryOptions[] = [];
   galleryImages: NgxGalleryImage[]= [];
