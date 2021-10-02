@@ -1,10 +1,12 @@
+
+
 <div class="row" *ngIf="member">
   <div class="col-4">
     <h1>Your profile</h1>
   </div>
   <div class="col-8">
-    <div class="alert alert-info" *ngIf="editForm.dirty">
-      <strong>Information: </strong> You made changes. Any unsaved changes wil be lost.
+    <div class="alert alert-info" *ngIf="editForm?.dirty">
+      <strong>Information: </strong> You made changes. Any unsaved changes wilL be lost.
     </div>
   </div>
   <div class="col-4">
@@ -29,7 +31,7 @@
         </div>
       </div>
       <div class="card-footer">
-          <button [disabled]="!editForm.dirty"  form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
+          <button [disabled]="!editForm?.dirty"  form="editForm" type="submit" class="btn btn-success btn-block">Save Changes</button>
       </div>
     </div>
   </div>
@@ -59,3 +61,4 @@
     </tabset>
   </div>
 </div>
+
