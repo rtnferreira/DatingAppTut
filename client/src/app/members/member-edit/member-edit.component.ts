@@ -1,6 +1,8 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ReplaySubject } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
@@ -17,14 +19,14 @@ export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm;
   @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any)
   {
-    if(this.editForm.dirty)
+    if(this.editForm?.dirty)
     {
       $event.returnValue = true;
     }
   }
 
-  member!: Member;
-  user!: User;
+  member: Member;
+  user: User;
 
 
   constructor(private accountService: AccountService
@@ -37,14 +39,14 @@ export class MemberEditComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.loadMember();
+     this.loadMember();
   }
 
   loadMember()
   {
     this.memberService.getMember(this.user.username).subscribe(member =>
       {
-        this.member = member;
+         this.member = member;
       })
   }
 
